@@ -12,11 +12,12 @@ COPY . .
 # Create data directory
 RUN mkdir -p data
 
-# Setup database
-RUN bun run db:setup
+# Copy and make entrypoint script executable
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
 
 # Expose port
 EXPOSE 5555
 
-# Start the application
-CMD ["bun", "run", "start"]
+# Use entrypoint script
+ENTRYPOINT ["/docker-entrypoint.sh"]
