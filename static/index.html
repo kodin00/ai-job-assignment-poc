@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Assignment System</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:wght@400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <h1 class="logo">
+          <span class="logo-main">JOB MATCH</span>
+          <span class="logo-sub">AI-Powered Assignment System</span>
+        </h1>
+        <div class="header-actions">
+          <button class="btn btn-primary" id="matchBtn">
+            <span class="btn-icon">⚡</span>
+            <span>RUN MATCH</span>
+          </button>
+          <button class="btn btn-secondary" id="addUserBtn">+ User</button>
+          <button class="btn btn-secondary" id="addJobBtn">+ Job</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Analyzing compatibility...</p>
+    </div>
+
+    <!-- Kanban Board -->
+    <main class="kanban">
+      <div class="kanban-column" id="usersColumn">
+        <div class="column-header">
+          <h2 class="column-title">CANDIDATES</h2>
+          <span class="column-count" id="usersCount">0</span>
+        </div>
+        <div class="column-content" id="usersList">
+          <!-- User cards will be inserted here -->
+        </div>
+      </div>
+
+      <div class="kanban-column" id="jobsColumn">
+        <div class="column-header">
+          <h2 class="column-title">POSITIONS</h2>
+          <span class="column-count" id="jobsCount">0</span>
+        </div>
+        <div class="column-content" id="jobsList">
+          <!-- Job cards will be inserted here -->
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Add User Modal -->
+  <div class="modal" id="userModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Add Candidate</h2>
+        <button class="modal-close" id="closeUserModal">&times;</button>
+      </div>
+      <form id="userForm">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" name="name" required placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" required placeholder="john@example.com">
+        </div>
+        <div class="form-group">
+          <label>Skills (comma-separated)</label>
+          <input type="text" name="skills" placeholder="JavaScript, React, Node.js">
+        </div>
+        <div class="form-group">
+          <label>CV Text (or upload PDF below)</label>
+          <textarea name="cvText" rows="5" placeholder="Paste CV content here or upload PDF..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Upload CV (PDF)</label>
+          <input type="file" name="cvFile" accept=".pdf">
+          <span class="form-hint">Optional: Upload PDF instead of pasting text</span>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-ghost" id="cancelUserBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add Candidate</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Job Modal -->
+  <div class="modal" id="jobModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Add Position</h2>
+        <button class="modal-close" id="closeJobModal">&times;</button>
+      </div>
+      <form id="jobForm">
+        <div class="form-group">
+          <label>Job Title</label>
+          <input type="text" name="title" required placeholder="Senior Frontend Engineer">
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea name="description" rows="3" required placeholder="We're looking for..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Requirements</label>
+          <textarea name="requirements" rows="4" required placeholder="5+ years experience, React, TypeScript..."></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" placeholder="Remote / New York">
+          </div>
+          <div class="form-group">
+            <label>Salary Range</label>
+            <input type="text" name="salary" placeholder="$120k - $160k">
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-ghost" id="cancelJobBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add Position</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
