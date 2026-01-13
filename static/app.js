@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:5555/api';
+// Use relative URL so it works on any domain/IP
+const API_URL = '/api';
 
 // State
 let users = [];
