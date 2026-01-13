@@ -42,7 +42,7 @@ Only include jobs with a score of 30 or higher.`;
 
   try {
     const response = await ai.models.generateContent({
-      model: 'gemini-2.0-flash-exp',
+      model: 'gemini-2.5-flash',
       contents: prompt,
     });
 
